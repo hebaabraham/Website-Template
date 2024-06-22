@@ -1,48 +1,104 @@
-*{
+/* Reset and basic styles */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     font-family: sans-serif;
 }
-.banner{
+
+/* Banner section */
+.banner {
     width: 100%;
     height: 100vh;
-    background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)),url(background.jpg);
+    background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)), url(background.jpg);
     background-size: cover;
     background-position: center;
+    position: relative;
 }
-.navbar{
+
+/* Navbar styling */
+.navbar {
     width: 85%;
     margin: auto;
-    padding: 35px 0;
+    padding: 20px 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
 }
-.logo{
+
+.logo {
     width: 120px;
     cursor: pointer;
 }
-.navbar ul li{
+
+.navbar ul {
     list-style: none;
-    display: inline-block;
-    margin: 0 20px;
+    display: flex;
 }
 
-.navbar ul li a{
+.navbar ul li {
+    margin: 0 15px;
+    position: relative; /* Ensure pseudo-element is positioned relative to li */
+}
+
+.navbar ul li a {
     text-decoration: none;
     color: #fff;
     text-transform: uppercase;
+    padding: 10px;
+    transition: all 0.3s ease;
 }
-.navbar ul li::after{
+
+.navbar ul li::after {
     content: '';
     height: 3px;
-    width: 100%;
+    width: 0; /* Initially hide underline */
     background: #009688;
     position: absolute;
     left: 0;
-    bottom: -10px;
-    transition: 0.5s;
+    bottom: -5px; /* Adjust position for underline */
+    transition: width 0.3s ease;
 }
-.navbar ul li:hover::after{
+
+.navbar ul li:hover::after {
     width: 100%;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 15px 0;
+    }
+
+    .logo {
+        width: 100px;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar ul li {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .navbar ul li::after {
+        bottom: -3px; /* Adjust underline position */
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 10px 0;
+    }
+
+    .navbar ul li {
+        margin: 8px 0;
+    }
 }
